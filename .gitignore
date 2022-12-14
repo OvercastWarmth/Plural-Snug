@@ -1,0 +1,4 @@
+config.json
+.vscode/
+testing-db/
+__pycache__/

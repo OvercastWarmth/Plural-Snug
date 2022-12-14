@@ -1,0 +1,29 @@
+{
+    "name": "Myriad",
+    "display_name": "Myriad Kit",
+    "color": "F6C57F",
+    "birthday": "2018-07-11",
+    "pronouns": "they/them",
+    "avatar_url": "https://cdn.discordapp.com/avatars/466378653216014359/39a9860f40dbf750702b0908ed4b8ea7.png?size=256",
+    "banner": null,
+    "description": "Hi, I'm Myriad, PluralKit's lovely mascot. This is an example of a member card with every option filled out.",
+    "keep_proxy": false,
+    "proxy_tags": [
+        {
+            "prefix": "{",
+            "suffix": "}"
+        },
+        {
+            "prefix": "M:",
+            "suffix": null
+        }
+    ],
+    "meta": {
+        "PluralKit": {
+            "id": "loxqc",
+            "uuid": "713d862d-d339-4922-b671-1ee4556c64df",
+            "created": "2020-01-12T02:03:53.924108Z",
+            "privacy": null
+        }
+    }
+}

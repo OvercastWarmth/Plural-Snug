@@ -10,7 +10,7 @@ NOTE: this is in no way done yet, you can technically use it if you want but it'
 
 Configuration is done through a `config.json` file, like this example here:
 
-```json
+```json5
 {
     "database": "C:/PluralSnug-Database", // Path to your database (can be relative but not recommended)
     "PluralKit": {

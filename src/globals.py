@@ -1,5 +1,8 @@
 from json import load
 from rich.console import Console
+from rich.traceback import install
+
+install()
 
 with open("config.json") as f:
     config = load(f)

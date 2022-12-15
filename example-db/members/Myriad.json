@@ -23,7 +23,10 @@
             "id": "loxqc",
             "uuid": "713d862d-d339-4922-b671-1ee4556c64df",
             "created": "2020-01-12T02:03:53.924108Z",
-            "privacy": null
+            "privacy": null,
+            "autoproxy_enabled": null,
+            "message_count": 7,
+            "last_message_timestamp": null
         }
     }
 }

@@ -12,7 +12,8 @@
             "id": "exmpl",
             "uuid": "3be61c07-9a44-43a5-8d06-9d1253f2a830",
             "created": "2020-01-12T02:00:33.387824Z",
-            "privacy": null
+            "privacy": null,
+            "webhook_url": null
         }
     }
 }

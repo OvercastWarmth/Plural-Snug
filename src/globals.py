@@ -1,4 +1,5 @@
 from json import load
+
 from rich.console import Console
 from rich.traceback import install
 
@@ -14,9 +15,25 @@ DB_PATH = config["database"]
 try:
     console = Console()
 except:
-    class FakeConsole():
-        def log(self, value):
+
+    class FakeConsole:
+        def log(self, value) -> None:
             print(value)
 
     console = FakeConsole()
-    console.log("You don't have rich installed, so the console won't look as nice. You can fix that with `pip install rich` if you like.")
+    console.log(
+        "You don't have rich installed, so the console won't look as nice. You can fix that with `pip install rich` if you like."
+    )
+
+
+def getKey(dictionary, value):
+    """Get the key of a value in a dictionary
+
+    Args:
+        dictionary (dict): Dictionary to search
+        value (any): Value to search for
+
+    Returns:
+        any: The key for the value found
+    """
+    return list(dictionary.keys())[list(dictionary.values()).index(value)]

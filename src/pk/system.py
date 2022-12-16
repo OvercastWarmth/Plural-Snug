@@ -1,5 +1,8 @@
-from globals import PLURALKIT_API, PLURALKIT_TOKEN
+"""Methods for managing PluralKit system data"""
+
 from requests import get as fetch
+
+from globals import PLURALKIT_API, PLURALKIT_TOKEN, console
 
 
 def getSystem() -> dict:
@@ -14,6 +17,19 @@ def getSystem() -> dict:
     ).json()
 
 
+convertWhitelist = [
+    "name",
+    "description",
+    "tag",
+    "pronouns",
+    "avatar_url",
+    "banner",
+    "color",
+]
+convertMetaWhitelist = ["id", "uuid", "created", "privacy", "webhook_url"]
+convertBlacklist = [""]
+
+
 def convertPKToPS(systemDataPK: dict) -> dict:
     """Convert a PluralKit system model to a PluralSnug system model
 
@@ -26,14 +42,16 @@ def convertPKToPS(systemDataPK: dict) -> dict:
 
     systemDataPS = {"meta": {"PluralKit": {}}}
 
-    # Handle the metadata values separately
-    systemDataPS["meta"]["PluralKit"]["id"] = systemDataPK.pop("id")
-    systemDataPS["meta"]["PluralKit"]["uuid"] = systemDataPK.pop("uuid")
-    systemDataPS["meta"]["PluralKit"]["created"] = systemDataPK.pop("created")
-    systemDataPS["meta"]["PluralKit"]["privacy"] = systemDataPK.pop("privacy")
-
     for point, data in systemDataPK.items():
-        systemDataPS[point] = data
+        if point in convertWhitelist:
+            systemDataPS[point] = data
+        elif point in convertMetaWhitelist:
+            systemDataPS["meta"]["PluralKit"][point] = data
+        elif not point in convertBlacklist:
+            console.log(
+                f"[red]Unknown value found in system data for {systemDataPK['name']} ({systemDataPK['id']}):"
+            )
+            console.log({point: data})
 
     return systemDataPS
 

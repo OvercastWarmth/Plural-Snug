@@ -2,3 +2,4 @@ config.json
 .vscode/
 testing-db/
 __pycache__/
+src-old/

@@ -1,5 +1,1 @@
-from pk.member import getMemberList, massImport
-from ps.index import refreshIndexFile
-
-massImport(getMemberList())
-refreshIndexFile()
+# TODO: finish reimplementing all of our previous work as classes because we were stupid to not start off with that

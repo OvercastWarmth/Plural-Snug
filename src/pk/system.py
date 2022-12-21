@@ -1,31 +1,35 @@
 from requests import get as fetch
-
-from globals import PLURALKIT_API, PLURALKIT_TOKEN
+from pk.globals import API, TOKEN, PRIVACY_MAP
+from ps.globals import Metadata
 
 
 class PkSystemPrivacy:
-    description: bool | None
-    pronoun: bool | None
-    member_list: bool | None
-    group_list: bool | None
-    front: bool | None
-    front_history: bool | None
+    """Pluralkit system privacy model"""
+
+    description: bool
+    pronoun: bool
+    member_list: bool
+    group_list: bool
+    front: bool
+    front_history: bool
 
     def __init__(self, privacy_data: dict) -> None:
-        self.description = privacy_data["description_privacy"]
-        self.pronoun = privacy_data["pronoun_privacy"]
-        self.member_list = privacy_data["member_list_privacy"]
-        self.group_list = privacy_data["group_list_privacy"]
-        self.front = privacy_data["front_privacy"]
-        self.front_history = privacy_data["front_history_privacy"]
+        self.description = PRIVACY_MAP[privacy_data["description_privacy"]]
+        self.pronoun = PRIVACY_MAP[privacy_data["pronoun_privacy"]]
+        self.member_list = PRIVACY_MAP[privacy_data["member_list_privacy"]]
+        self.group_list = PRIVACY_MAP[privacy_data["group_list_privacy"]]
+        self.front = PRIVACY_MAP[privacy_data["front_privacy"]]
+        self.front_history = PRIVACY_MAP[privacy_data["front_history_privacy"]]
 
     def __str__(self) -> str:
         return f"""im not bothered so {self.description} heres one to check it works"""
-        # TODO: better privacy display
+        # TODO: finish implementing string conversions
 
 
 # TODO: document
 class PkSystem:
+    """Pluralkit system model"""
+
     id: str
     uuid: str
     name: str | None
@@ -69,15 +73,29 @@ class PkSystem:
     # TODO: prettier formatting?
 
 
+class PkSystemMetadata(Metadata):
+    id: str
+    uuid: str
+    created: str | None
+    privacy: PkSystemPrivacy | None
+
+    def __init__(self, system: PkSystem):
+        self.type = "pk"
+        self.id = system.id
+        self.uuid = system.uuid
+        self.created = system.created
+        self.privacy = system.privacy
+
+
 def get_system() -> dict:
-    """Get the curent token's system
+    """Get the current token's system
 
     Returns:
         dict: The api response
     """
     return fetch(
-        f"{PLURALKIT_API}/systems/@me",
-        headers={"Authorization": PLURALKIT_TOKEN},
+        f"{API}/systems/@me",
+        headers={"Authorization": TOKEN},
     ).json()
 
 

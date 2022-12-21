@@ -2,12 +2,9 @@ from json import load
 from rich.console import Console
 from rich.traceback import install
 
-
 with open("config.json") as f:
     config = load(f)
 
-PLURALKIT_TOKEN = config["PluralKit"]["token"]
-PLURALKIT_API = "https://api.pluralkit.me/v2"
 DB_PATH = config["database"]
 
 try:

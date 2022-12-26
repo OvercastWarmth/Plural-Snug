@@ -1,1 +1,2 @@
-# TODO: finish reimplementing all of our previous work as classes because we were stupid to not start off with that
+# Notes for future us:
+#   Currently working on getting system working from pk > ps, next step is probably other way around

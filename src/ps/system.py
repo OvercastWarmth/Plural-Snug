@@ -33,6 +33,8 @@ class PluralKitSystemMetadata(Metadata):
     created: datetime
     privacy: dict[str, PluralKitPrivacy]
 
+    type = "PluralKit"
+
     def __init__(self, system: PluralKitSystem):
         self.id = system.id.id
         self.uuid = system.id.uuid
